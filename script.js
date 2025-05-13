@@ -28,8 +28,8 @@ function login(createAccount) {
     .then(res => res.json())
     .then(data => {
       if (data.data && data.data.SessionTicket) {
-        message.textContent = "Test successful!";
-        message.style.color = "green";
+        localStorage.setItem("sessionTicket", data.data.SessionTicket); // Save token
+        window.location.href = "home.html"; // Redirect to protected page
       } else {
         message.textContent = "Login failed.";
         message.style.color = "red";
